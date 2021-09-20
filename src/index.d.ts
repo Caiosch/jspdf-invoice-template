@@ -1,4 +1,5 @@
 export default jsPDFInvoiceTemplate;
+
 export namespace OutputType {
     const Save: string;
     const DataUriString: string;
@@ -7,7 +8,9 @@ export namespace OutputType {
     const Blob: string;
     const ArrayBuffer: string;
 }
+
 import { jsPDF } from "jspdf";
+
 /**
  *
  * @param { {
@@ -71,12 +74,15 @@ import { jsPDF } from "jspdf";
  *           }
  *       },
  *   },
+ *   autoTableHeader: [],
+ *   autoTableBody: [],
  *   footer?: {
  *       text?: string,
  *   },
  *   pageEnable?: boolean,
  *   pageLabel?: string, } } props
  */
+
 declare function jsPDFInvoiceTemplate(props: {
     outputType: {
         Save: string;
@@ -145,6 +151,8 @@ declare function jsPDFInvoiceTemplate(props: {
             };
         };
     };
+    autoTableHeader: [],
+    autoTableBody: [],
     footer?: {
         text?: string;
     };
@@ -157,4 +165,5 @@ declare function jsPDFInvoiceTemplate(props: {
     dataUriString?: string;
     arrayBuffer?: ArrayBuffer;
 };
+
 export { jsPDF };

@@ -1,4 +1,5 @@
 import { jsPDF } from "jspdf";
+import 'jspdf-autotable';
 
 const OutputType = {
   Save: "save", //save pdf as a file
@@ -141,6 +142,10 @@ function jsPDFInvoiceTemplate(props) {
           fontSize: props.invoice?.row2?.style?.fontSize || 12,
         },
       },
+    },
+    autoTable: {
+        autoTableHeader: props.autoTableHeader || [],
+        autoTableBody: props.autoTableBody || []
     },
     footer: {
       text: props.footer?.text || "",
@@ -513,6 +518,49 @@ function jsPDFInvoiceTemplate(props) {
     return currentHeight;
   };
   addInvoiceDesc();
+
+  var addAutoTable = () => {
+      var _head = [];
+
+      for (var i = 0; i < pdfConfig.autoTableHead.length; i++) {
+          _head.push('Name', 'Value');
+      }
+
+      const biggestColumnCount = (columns) => {
+        var _count = 0;
+        columns.forEach(column => {
+            if (column.length > _count) { _count = column.length; }
+        });
+        return _count;
+      }
+
+      var b = pdfConfig.autoTableBody;
+
+      var _max = biggestColumnCount(b);
+      var _filledBlanks = [];
+
+      for (var i = 0; i < pdfConfig.autoTableHead.length; i++) {
+        for(var j = 0; j < _max; j++) {
+          var _name = b[i].length > j ? b[i][j].name : "";
+          var _value = b[i].length > j ? b[i][j].value : "";
+          _bodyFilledWithBlankContent.push(_name, _value);
+        }
+      }
+
+      var _formattedLines = [];
+
+      for (var x = 0; x < _max; x += 2) {
+        _formattedLines.push([_filledBlanks[x].toString(), _filledBlanks[x+1].toString(), _filledBlanks[x+2].toString(), _filledBlanks[x+3].toString(), _filledBlanks[x+4].toString(), _filledBlanks[x+5].toString()]);
+      }
+
+      doc.addAutoTable({
+        head: [..._head],
+        body: [..._formattedLines]
+      });
+
+      currentHeight += 300;
+  };
+  addAutoTable();
 
   //add num of page at the bottom
   if (doc.getNumberOfPages() === 1 && param.pageEnable) {
