@@ -531,8 +531,8 @@ function jsPDFInvoiceTemplate(props) {
     doc.text(10, currentHeight + 6, 'Calculated Properties');
     doc.setFontSize(pdfConfig.headerTextSize - 9);
     doc.text(12, currentHeight + 16, 'Formula Parameters');
-    doc.text(68, currentHeight + 16, 'Reaction Properties');
-    doc.text(135, currentHeight + 16, 'Final Properties');
+    doc.text(66.5, currentHeight + 16, 'Reaction Properties');
+    doc.text(135.8, currentHeight + 16, 'Final Properties');
 
     doc.autoTable({
     startY: currentHeight + 18,
