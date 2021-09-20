@@ -151,8 +151,10 @@ declare function jsPDFInvoiceTemplate(props: {
             };
         };
     };
-    autoTableHeader: [],
-    autoTableBody: [],
+    autoTable?: {
+        autoTableHeader?: [],
+        autoTableBody?: [],
+    }
     footer?: {
         text?: string;
     };

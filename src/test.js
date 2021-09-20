@@ -185,7 +185,7 @@ function jsPDFInvoiceTemplate(props) {
   var pdfConfig = {
     headerTextSize: 20,
     labelTextSize: 12,
-    fieldTextSize: 8,
+    fieldTextSize: 10,
     lineHeight: 6,
     subLineHeight: 4,
   };
@@ -541,7 +541,7 @@ function jsPDFInvoiceTemplate(props) {
     body: param.autoTable.autoTableBody,
     margin: { left: 10, right: 10 },
     bodyStyles: {
-        fontSize: pdfConfig.fieldTextSize,
+        fontSize: 10,
     },
     });
   };
