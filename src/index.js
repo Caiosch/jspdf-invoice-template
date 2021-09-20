@@ -53,27 +53,8 @@ export { OutputType, jsPDF };
  *       tableBodyBorder?: boolean,
  *       header?: string[],
  *       table?: any,
- *       invTotalLabel?: string,
- *       invTotal?: string,
- *       invCurrency?: string,
  *       invDescLabel?: string,
  *       invDesc?: string,
- *       row1?: {
- *           col1?: string,
- *           col2?: string,
- *           col3?: string,
- *           style?: {
- *               fontSize?: number
- *           }
- *       },
- *       row2?: {
- *           col1?: string,
- *           col2?: string,
- *           col3?: string,
- *           style?: {
- *               fontSize?: number
- *           }
- *       },
  *   },
  *   footer?: {
  *       text?: string,
@@ -114,7 +95,6 @@ function jsPDFInvoiceTemplate(props) {
     },
     invoice: {
       label: props.invoice?.label || "",
-      invTotalLabel: props.invoice?.invTotalLabel || "",
       num: props.invoice?.num || "",
       invDate: props.invoice?.invDate || "",
       invGenDate: props.invoice?.invGenDate || "",
@@ -122,26 +102,8 @@ function jsPDFInvoiceTemplate(props) {
       tableBodyBorder: props.invoice?.tableBodyBorder || false,
       header: props.invoice?.header || [],
       table: props.invoice?.table || [],
-      invTotal: props.invoice?.invTotal || "",
-      invCurrency: props.invoice?.invCurrency || "",
       invDescLabel: props.invoice?.invDescLabel || "",
       invDesc: props.invoice?.invDesc || "",
-      row1: {
-        col1: props.invoice?.row1?.col1 || "",
-        col2: props.invoice?.row1?.col2 || "",
-        col3: props.invoice?.row1?.col3 || "",
-        style: {
-          fontSize: props.invoice?.row1?.style?.fontSize || 12,
-        },
-      },
-      row2: {
-        col1: props.invoice?.row2?.col1 || "",
-        col2: props.invoice?.row2?.col2 || "",
-        col3: props.invoice?.row2?.col3 || "",
-        style: {
-          fontSize: props.invoice?.row2?.style?.fontSize || 12,
-        },
-      },
     },
     autoTable: {
         autoTableHeader: props.autoTable?.autoTableHeader || [],
